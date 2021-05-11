@@ -34,7 +34,6 @@ public class State {
     @JoinColumn(name = "pais", referencedColumnName = "id")
     private Country country;
 
-
     @Type(type = "jsonb")
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "ddd", columnDefinition = "jsonb")
