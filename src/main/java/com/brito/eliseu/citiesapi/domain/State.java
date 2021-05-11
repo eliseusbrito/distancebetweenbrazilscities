@@ -25,8 +25,15 @@ public class State {
 
     private Integer ibge;
 
-    @Column(name = "pais")
-    private Integer countryId;
+//    // 1ºOpção: Desta forma tras somente o id do país
+//    @Column(name = "pais")
+//    private Integer countryId;
+
+    // 2ºOpção: desta forma tras a entidade país
+    @ManyToOne
+    @JoinColumn(name = "pais", referencedColumnName = "id")
+    private Country country;
+
 
     @Type(type = "jsonb")
     @Basic(fetch = FetchType.LAZY)
@@ -52,8 +59,12 @@ public class State {
         return ibge;
     }
 
-    public Integer getCountryId() {
-        return countryId;
+//    public Integer getCountryId() {
+//        return countryId;
+//    }
+
+    public Country getCountry() {
+        return country;
     }
 
     public List<Integer> getDdd() {
